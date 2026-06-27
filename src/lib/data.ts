@@ -1,0 +1,73 @@
+import { Ingredient } from '../types';
+
+export const INITIAL_INGREDIENTS: Ingredient[] = [
+  // Frutas
+  { id: 'f-1', name: 'Plátano', category: 'Frutas' },
+  { id: 'f-2', name: 'Fresa', category: 'Frutas' },
+  { id: 'f-3', name: 'Mango', category: 'Frutas' },
+  { id: 'f-4', name: 'Piña', category: 'Frutas' },
+  { id: 'f-5', name: 'Durazno', category: 'Frutas' },
+  { id: 'f-6', name: 'Frambuesa', category: 'Frutas' },
+  { id: 'f-7', name: 'Zarzamora', category: 'Frutas' },
+  { id: 'f-8', name: 'Arándanos', category: 'Frutas' },
+  { id: 'f-9', name: 'Manzana', category: 'Frutas' },
+  { id: 'f-10', name: 'Pera', category: 'Frutas' },
+  { id: 'f-11', name: 'Kiwi', category: 'Frutas' },
+  { id: 'f-12', name: 'Sandía', category: 'Frutas' },
+  { id: 'f-13', name: 'Melón', category: 'Frutas' },
+  { id: 'f-14', name: 'Coco', category: 'Frutas' },
+  { id: 'f-15', name: 'Papaya', category: 'Frutas' },
+  { id: 'f-16', name: 'Limón', category: 'Frutas' },
+  { id: 'f-17', name: 'Naranja', category: 'Frutas' },
+  { id: 'f-18', name: 'Mandarina', category: 'Frutas' },
+  { id: 'f-19', name: 'Aguacate', category: 'Frutas' },
+  { id: 'f-20', name: 'Uvas', category: 'Frutas' },
+  { id: 'f-21', name: 'Cereza', category: 'Frutas' },
+  { id: 'f-22', name: 'Maracuyá', category: 'Frutas' },
+
+  // Lácteos
+  { id: 'l-1', name: 'Leche entera', category: 'Lácteos' },
+  { id: 'l-2', name: 'Leche deslactosada', category: 'Lácteos' },
+  { id: 'l-3', name: 'Leche de almendra', category: 'Lácteos' },
+  { id: 'l-4', name: 'Leche de avena', category: 'Lácteos' },
+  { id: 'l-5', name: 'Leche de coco', category: 'Lácteos' },
+  { id: 'l-6', name: 'Leche de soya', category: 'Lácteos' },
+  { id: 'l-7', name: 'Yogurt griego', category: 'Lácteos' },
+  { id: 'l-8', name: 'Yogurt natural', category: 'Lácteos' },
+  { id: 'l-9', name: 'Crema para batir', category: 'Lácteos' },
+  { id: 'l-10', name: 'Queso crema', category: 'Lácteos' },
+
+  // Endulzantes
+  { id: 'e-1', name: 'Azúcar', category: 'Endulzantes' },
+  { id: 'e-2', name: 'Miel', category: 'Endulzantes' },
+  { id: 'e-3', name: 'Stevia', category: 'Endulzantes' },
+  { id: 'e-4', name: 'Monk Fruit', category: 'Endulzantes' },
+  { id: 'e-5', name: 'Jarabe de maple', category: 'Endulzantes' },
+  { id: 'e-6', name: 'Leche condensada', category: 'Endulzantes' },
+  { id: 'e-7', name: 'Dátiles', category: 'Endulzantes' },
+
+  // Chocolates
+  { id: 'c-1', name: 'Cacao', category: 'Chocolates' },
+  { id: 'c-2', name: 'Chocolate oscuro', category: 'Chocolates' },
+  { id: 'c-3', name: 'Chocolate blanco', category: 'Chocolates' },
+  { id: 'c-4', name: 'Nutella', category: 'Chocolates' },
+  { id: 'c-5', name: 'Chispas de chocolate', category: 'Chocolates' },
+  { id: 'c-6', name: 'Oreo', category: 'Chocolates' },
+
+  // Extras
+  { id: 'ex-1', name: 'Vainilla', category: 'Extras' },
+  { id: 'ex-2', name: 'Canela', category: 'Extras' },
+  { id: 'ex-3', name: 'Café', category: 'Extras' },
+  { id: 'ex-4', name: 'Matcha', category: 'Extras' },
+  { id: 'ex-5', name: 'Proteína en polvo', category: 'Extras' },
+  { id: 'ex-6', name: 'Crema de cacahuate', category: 'Extras' },
+  { id: 'ex-7', name: 'Pistache', category: 'Extras' },
+  { id: 'ex-8', name: 'Nuez', category: 'Extras' },
+  { id: 'ex-9', name: 'Almendra', category: 'Extras' },
+  { id: 'ex-10', name: 'Coco rallado', category: 'Extras' },
+  { id: 'ex-11', name: 'Galletas', category: 'Extras' },
+  { id: 'ex-12', name: 'Brownie', category: 'Extras' },
+  { id: 'ex-13', name: 'Pretzels', category: 'Extras' },
+  { id: 'ex-14', name: 'Caramelo', category: 'Extras' },
+  { id: 'ex-15', name: 'Cajeta', category: 'Extras' },
+];

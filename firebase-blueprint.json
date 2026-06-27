@@ -1,0 +1,43 @@
+{
+  "collections": [
+    {
+      "name": "recipes",
+      "fields": [
+        { "name": "userId", "type": "string" },
+        { "name": "name", "type": "string" },
+        { "name": "type", "type": "string" },
+        { "name": "difficulty", "type": "string" },
+        { "name": "time", "type": "string" },
+        { "name": "ingredients", "type": "array" },
+        { "name": "instructions", "type": "array" },
+        { "name": "program", "type": "string" },
+        { "name": "respins", "type": "number" },
+        { "name": "mixins", "type": "array" },
+        { "name": "tips", "type": "string" },
+        { "name": "macros", "type": "map" },
+        { "name": "tags", "type": "array" },
+        { "name": "imageUrl", "type": "string" },
+        { "name": "createdAt", "type": "number" }
+      ],
+      "rules": [
+        { "action": "read", "condition": "request.auth != null && resource.data.userId == request.auth.uid" },
+        { "action": "create", "condition": "request.auth != null && request.resource.data.userId == request.auth.uid" },
+        { "action": "update", "condition": "request.auth != null && resource.data.userId == request.auth.uid" },
+        { "action": "delete", "condition": "request.auth != null && resource.data.userId == request.auth.uid" }
+      ]
+    },
+    {
+      "name": "favorites",
+      "fields": [
+        { "name": "userId", "type": "string" },
+        { "name": "recipeId", "type": "string" },
+        { "name": "createdAt", "type": "number" }
+      ],
+      "rules": [
+        { "action": "read", "condition": "request.auth != null && resource.data.userId == request.auth.uid" },
+        { "action": "create", "condition": "request.auth != null && request.resource.data.userId == request.auth.uid" },
+        { "action": "delete", "condition": "request.auth != null && resource.data.userId == request.auth.uid" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Creami AI",
+  "description": "Una aplicación premium para generar recetas de Ninja Creami con IA basadas en los ingredientes de tu cocina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
