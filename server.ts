@@ -20,7 +20,7 @@ const ai = new GoogleGenAI({
 
 app.post('/api/generate-recipes', async (req, res) => {
   try {
-    const { ingredients, type } = req.body;
+    const { ingredients, type, recipeType } = req.body;
     
     if (!ingredients || ingredients.length === 0) {
       return res.status(400).json({ error: 'Ingredients are required' });
@@ -34,6 +34,7 @@ app.post('/api/generate-recipes', async (req, res) => {
         ? 'Generate 1 amazing, creative, and completely random Ninja Creami recipe. Ignore the provided ingredients, just surprise me with something delicious and unique.' 
         : `Generate 3 delicious Ninja Creami recipes using ONLY or PRIMARILY these ingredients: ${ingredients.join(', ')}.`
       }
+      ${recipeType ? `CRITICAL INSTRUCTION: Make sure these recipes are specifically designed for the '${recipeType}' function/style.` : ''}
       
       Respond strictly in JSON format containing an array of recipe objects. Do not include markdown formatting like \`\`\`json.
       
@@ -61,7 +62,7 @@ app.post('/api/generate-recipes', async (req, res) => {
     `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
         temperature: 0.7,

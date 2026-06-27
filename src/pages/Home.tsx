@@ -15,6 +15,16 @@ export default function Home() {
   const [currentRecipes, setCurrentRecipes] = useState<Recipe[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [error, setError] = useState('');
+  const [selectedRecipeType, setSelectedRecipeType] = useState<string>('');
+
+  const creamiTypes = [
+    { id: 'ice-cream', label: 'Helado' },
+    { id: 'gelato', label: 'Gelato' },
+    { id: 'lite-ice-cream', label: 'Lite Ice Cream' },
+    { id: 'milkshake', label: 'Milkshake' },
+    { id: 'sorbet', label: 'Sorbet' },
+    { id: 'smoothie-bowl', label: 'Smoothie Bowl' },
+  ];
 
   const generateRecipes = async (type: 'normal' | 'surprise') => {
     if (type === 'normal' && selectedIngredientIds.length === 0) {
@@ -34,10 +44,13 @@ export default function Home() {
       const response = await fetch('/api/generate-recipes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ingredients: selectedNames, type })
+        body: JSON.stringify({ ingredients: selectedNames, type, recipeType: selectedRecipeType })
       });
 
-      if (!response.ok) throw new Error('Error al generar recetas');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || errorData.details || 'Error al generar recetas');
+      }
       
       const data = await response.json();
       
@@ -50,9 +63,9 @@ export default function Home() {
         setCurrentRecipes(recipesWithMeta);
         addRecipesToHistory(recipesWithMeta);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError('Ocurrió un error al conectar con la IA. Intenta de nuevo.');
+      setError(err.message || 'Ocurrió un error al conectar con la IA. Intenta de nuevo.');
     } finally {
       setLoading(false);
     }
@@ -83,6 +96,30 @@ export default function Home() {
       {/* Ingredient Selector */}
       <section className="w-full">
         <IngredientSelector />
+      </section>
+
+      {/* Recipe Type Selector */}
+      <section className="w-full max-w-4xl mx-auto px-4">
+        <div className="bg-white/40 dark:bg-slate-800/40 rounded-3xl p-6 sm:p-8 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 shadow-xl">
+          <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2">
+            🍨 Tipo de Receta <span className="text-sm font-normal text-slate-500">(Opcional)</span>
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {creamiTypes.map((type) => (
+              <button
+                key={type.id}
+                onClick={() => setSelectedRecipeType(type.label === selectedRecipeType ? '' : type.label)}
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
+                  selectedRecipeType === type.label
+                    ? 'bg-blue-500 text-white shadow-md shadow-blue-500/30'
+                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-700/50 border border-slate-200 dark:border-slate-700'
+                }`}
+              >
+                {type.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Action Buttons */}
